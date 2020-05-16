@@ -1,23 +1,20 @@
-import { ValidationError, ValidationCode } from './validation-error';
+import { ValidationCode } from './validation-error';
+import { isValidUser } from './isValidUser';
 
-export function isValidUser({ id }): boolean {
-  if (id.length < 3 || id.length > 32) {
-    throw new ValidationError({
-      code: ValidationCode.ID,
-      message: 'User ID must be between 3 and 32 characters.',
-    });
+export class ValidationError extends Error {
+  public code: ValidationCode;
+
+  constructor(err) {
+    super(err.message);
+
+    this.code = err.code;
+
+    Error.captureStackTrace(this, ValidationError);
   }
-
-  return true;
 }
 
 export function isValidNewUser({ id, password }): boolean {
-  if (id.length < 3 || id.length > 32) {
-    throw new ValidationError({
-      code: ValidationCode.ID,
-      message: 'User ID must be between 3 and 32 characters.',
-    });
-  }
+  isValidUser({ id });
 
   if (password.length < 8 || password.length > 100) {
     throw new ValidationError({

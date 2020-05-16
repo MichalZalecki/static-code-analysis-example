@@ -1,4 +1,4 @@
-import { isValidUser } from '../validation/user';
+import { isValidUser } from '../validation/isValidUser';
 
 export class UserModel {
   public readonly id: string;
