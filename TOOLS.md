@@ -15,6 +15,7 @@
 * `npm install -D dependency-cruiser`
 * Setup depcruise with `npx depcruise --init` and select `self-contained`
 * Run `npx depcruise --validate .dependency-cruiser.js src pages server` to validate
+* Run `npx depcruise --include-only "^(src|server|pages)" -x "\\.spec\\." --output-type dot . | dot -T svg > dependencygraph.svg` to generate graph
 
 ## ts-unused-exports
 
