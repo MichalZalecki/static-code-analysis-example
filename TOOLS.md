@@ -9,3 +9,16 @@
 * Go though the project setup
 * Go to Project Settings -> Quality Profiles -> Change TypeScript to "Sonar way recommended"
 * Add `sonar-project.properties` to instruct SonarQube where to find code coverage report
+
+## dependency-cruiser
+
+* `npm install -D dependency-cruiser`
+* Setup depcruise with `npx depcruise --init` and select `self-contained`
+* Run `npx depcruise --validate .dependency-cruiser.js src pages server` to validate
+
+## ts-unused-exports
+
+* `npm install -D ts-unused-exports`
+* `npx ts-unused-exports tsconfig.json pages/*.tsx src/**/*.ts server/**/*.ts --showLineNumber --excludePathsFromReport=/pages/`
+
+Pages are excluded from the report due to path-based routing/pages default export in Next.js
