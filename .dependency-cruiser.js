@@ -2,6 +2,18 @@ module.exports = {
   forbidden: [
     /* rules from the 'recommended' preset: */
     {
+      "name": "no-unreachable-from-root",
+      "severity": "error",
+      "from": {
+        "path": "^(pages/[a-z]+\\.tsx|server/server.ts)"
+      },
+      "to": {
+        "path": "src",
+        "pathNot": "node_modules|\\.(spec)\\.(js|jsx|ts|tsx)",
+        "reachable": false
+      }
+    },
+    {
       name: 'no-circular',
       severity: 'warn',
       comment:
@@ -116,7 +128,7 @@ module.exports = {
         'from.pathNot re of the not-to-dev-dep rule in the dependency-cruiser configuration',
       from: {
         path: '^(src)',
-        pathNot: '\\.spec\\.(js|ts|ls|coffee|litcoffee|coffee\\.md)$'
+        pathNot: '\\.spec\\.(js|ts|tsx|ls|coffee|litcoffee|coffee\\.md)$'
       },
       to: {
         dependencyTypes: [

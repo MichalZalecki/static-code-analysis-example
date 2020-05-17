@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import * as React from 'react';
 
-import { HeaderNav } from './header-nav';
-
 export interface IHeaderProps {
   me: { id: string; karma: number } | undefined;
   currentUrl: string;
@@ -34,9 +32,6 @@ export function Header(props: IHeaderProps): JSX.Element {
                     />
                   </a>
                 </Link>
-              </td>
-              <td style={{ lineHeight: '12px', height: '10px', padding: '0px' }}>
-                <HeaderNav currentUrl={currentUrl} isNavVisible={isNavVisible} title={title} />
               </td>
               <td style={{ textAlign: 'right', padding: '0px', paddingRight: '4px' }}>
                 {me ? (
